@@ -4,9 +4,8 @@ from streamlit_option_menu import option_menu
 
 # Membuat navigasi bar
 option = option_menu(
-    menu_title="Pilih Aplikasi Web",  # required
-    options=["Stream 1", "Stream 2"],  # required
-    icons=["house", "gear"],  # optional
+    menu_title="#FPnA",  # required
+    options=["GIS-Cleaning", "Rekap-SCM"],  # required
     menu_icon="cast",  # optional
     default_index=0,  # optional
     orientation="horizontal",
@@ -23,13 +22,11 @@ def run_stream_script(url):
         st.error(f"Failed to download file: {response.status_code}")
 
 # Arahkan ke aplikasi berdasarkan pilihan pengguna
-if option == 'Stream 1':
-    st.write("Mengakses Stream 1...")
+if option == 'GIS-Cleaning
     stream1_url = 'https://raw.githubusercontent.com/Analyst-FPnA/GIS-Cleaning/main/GIS.py'
     run_stream_script(stream1_url)
   
-elif option == 'Stream 2':
-    st.write("Mengakses Stream 2...")
+elif option == 'Rekap-SCM':
     stream2_url = 'https://raw.githubusercontent.com/Analyst-FPnA/Rekap-SCM/main/stream.py'
     run_stream_script(stream2_url)
 
