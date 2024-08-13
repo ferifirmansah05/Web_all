@@ -1,10 +1,6 @@
 import streamlit as st
-import os
 import requests
 from streamlit_option_menu import option_menu
-
-# Nama file lokal
-local_filename = 'stream.py'
 
 # Membuat navigasi bar
 option = option_menu(
@@ -21,10 +17,8 @@ def run_stream_script(url):
     # Mengunduh file dari GitHub
     response = requests.get(url)
     if response.status_code == 200:
-        with open(local_filename, 'wb') as f:
-            f.write(response.content)
         # Menjalankan file yang diunduh
-        exec(open(local_filename).read())
+        exec(response.text, globals())
     else:
         st.error(f"Failed to download file: {response.status_code}")
 
@@ -38,3 +32,4 @@ elif option == 'Stream 2':
     st.write("Mengakses Stream 2...")
     stream2_url = 'https://raw.githubusercontent.com/Analyst-FPnA/Rekap-SCM/main/stream.py'
     run_stream_script(stream2_url)
+
