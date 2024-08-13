@@ -16,38 +16,25 @@ option = option_menu(
     orientation="horizontal",
 )
 
+# Fungsi untuk menjalankan file python yang diunduh
+def run_stream_script(url):
+    # Mengunduh file dari GitHub
+    response = requests.get(url)
+    if response.status_code == 200:
+        with open(local_filename, 'wb') as f:
+            f.write(response.content)
+        # Menjalankan file yang diunduh
+        exec(open(local_filename).read())
+    else:
+        st.error(f"Failed to download file: {response.status_code}")
+
 # Arahkan ke aplikasi berdasarkan pilihan pengguna
 if option == 'Stream 1':
     st.write("Mengakses Stream 1...")
+    stream1_url = 'https://raw.githubusercontent.com/Analyst-FPnA/GIS-Cleaning/main/GIS.py'
+    run_stream_script(stream1_url)
   
-    url = 'https://raw.githubusercontent.com/Analyst-FPnA/GIS-Cleaning/main/GIS.py'
-    # Mengunduh file dari GitHub
-    response = requests.get(url)
-    if response.status_code == 200:
-        with open(local_filename, 'wb') as f:
-            f.write(response.content)
-    else:
-        print(f"Failed to download file: {response.status_code}")
-    
-    # Menjalankan file yang diunduh
-    with open(local_filename, 'r') as f:
-        exec(f.read())
-      
 elif option == 'Stream 2':
     st.write("Mengakses Stream 2...")
-  
-    url = 'https://raw.githubusercontent.com/Analyst-FPnA/Rekap-SCM/main/stream.py'
-    # Mengunduh file dari GitHub
-    response = requests.get(url)
-    if response.status_code == 200:
-        with open(local_filename, 'wb') as f:
-            f.write(response.content)
-    else:
-        print(f"Failed to download file: {response.status_code}")
-    
-    # Menjalankan file yang diunduh
-    with open(local_filename, 'r') as f:
-        exec(f.read())
-
-
-
+    stream2_url = 'https://raw.githubusercontent.com/Analyst-FPnA/Rekap-SCM/main/stream.py'
+    run_stream_script(stream2_url)
