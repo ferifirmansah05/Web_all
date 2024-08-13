@@ -22,7 +22,7 @@ def run_stream_script(url):
         st.error(f"Failed to download file: {response.status_code}")
 
 # Arahkan ke aplikasi berdasarkan pilihan pengguna
-if option == 'GIS-Cleaning
+if option == 'GIS-Cleaning'
     stream1_url = 'https://raw.githubusercontent.com/Analyst-FPnA/GIS-Cleaning/main/GIS.py'
     run_stream_script(stream1_url)
   
